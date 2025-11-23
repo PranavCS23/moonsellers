@@ -49,32 +49,43 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body className="bg-base-100 text-base-content">
+    <html lang="en" data-theme="luxury" className="h-full">
+      <body className="theme-moonsellers bg-white text-gray-900 min-h-screen flex flex-col pt-16 md:pt-20">
         <Navbar /> {/* Add the Navbar component here */}
         {/* Your shared Header component could go here, if you have one */}
         {/* For a very simple v0, you might integrate minimal header directly into page.tsx */}
-        {children} {/* This is where your page.tsx content will be rendered */}
+        <div className="flex-1">
+          {children}{" "}
+          {/* This is where your page.tsx content will be rendered */}
+        </div>
         {/* Your shared Footer component could go here */}
-        <footer className="bg-gray-800 text-white py-8">
+        <footer className="bg-black text-gray-300 border-t border-white/10 py-8">
           <div className="container mx-auto px-4 text-center">
             <p>
               &copy; {new Date().getFullYear()} Moonsellers. All rights
               reserved.
             </p>
             <div className="mt-4 text-sm text-gray-400">
-              <Link href="/privacy-policy" className="hover:underline mx-2">
+              <Link
+                href="/privacy-policy"
+                className="mx-2 text-yellow-400 hover:text-yellow-300"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/terms-of-service" className="hover:underline mx-2">
+              <Link
+                href="/terms-of-service"
+                className="mx-2 text-yellow-400 hover:text-yellow-300"
+              >
                 Terms of Service
               </Link>
             </div>
             <p className="mt-2 text-gray-500 text-xs">
-              Developed with ❤️ by Moonsellers Tech Team
+              Developed with <span className="text-yellow-400">❤️</span> by
+              Moonsellers Tech Team
             </p>
           </div>
         </footer>
+        {/* moved styles to globals.css; removed styled-jsx to avoid client-only in server layout */}
         {/* Google Analytics Script */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
